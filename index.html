@@ -119,7 +119,7 @@
 <body>
 
 <nav>
-  <span class="nav-name">Dr. Kalimullah</span>
+  <span class="nav-name">Nur M. M. Kalimullah</span>
   <div class="nav-links">
     <a href="#about">About</a>
     <a href="#experience">Experience</a>
@@ -137,12 +137,12 @@
   <div class="hero">
     <div class="hero-text">
       <p class="subtitle-tag">Research Fellow (Post-Doc)</p>
-      <h1>Nur M. M. Kalimullah (PhD, A.M.ASCE)</h1>
+      <h1>Nur M. M. Kalimullah</h1>
       <p class="affil">Dept. of Civil, Structural &amp; Environmental Engineering</p>
       <p class="affil">Trinity College Dublin, Ireland</p>
       <p class="bio">I am a Research Fellow at Trinity College Dublin working at the intersection of structural dynamics, physics-informed machine learning, and renewable energy systems. My research spans structural health monitoring, digital twin development for wind turbines, probabilistic ML for composite materials, and wave-based non-destructive evaluation.</p>
       <div class="pills">
-        <a href="mailto:nur.mk@tcd.ie" class="pill">✉ nur.mk@tcd.ie</a>
+        <a href="/cdn-cgi/l/email-protection#47293235692a2c07332423692e22" class="pill">✉ <span class="__cf_email__" data-cfemail="d2bca7a0fcbfb992a6b1b6fcbbb7">[email&#160;protected]</span></a>
         <a href="https://linkedin.com/in/findmussa" target="_blank" rel="noopener" class="pill">LinkedIn</a>
         <a href="https://scholar.google.com/citations?user=yrrCtqwAAAAJ&hl=en" target="_blank" rel="noopener" class="pill">Google Scholar</a>
       </div>
@@ -155,7 +155,7 @@
     -->
     <div class="avatar">
       <!-- <span class="avatar-initials">NK</span> -->
-      <img src="image.jpg" alt="Nur M. M. Kalimullah" />
+      <img src="image.jpg" alt="Nur M. M. Kalimullah" /> 
     </div>
   </div>
 </section>
@@ -210,7 +210,7 @@
   <h3 class="sub" style="margin-top:0">Journal Articles</h3>
   <ul class="pub-list">
 
-    <!-- [1] HAS PODCAST — file: podcasts/pub1.m4a -->
+    <!-- [1] HAS PODCAST — Publication [12] (MrDMD) — hosted on Google Drive -->
     <li class="pub-item">
       <span class="pub-num">[1]</span>
       <div>
@@ -303,7 +303,7 @@
       </div>
     </li>
 
-    <!-- [9] HAS PODCAST — file: podcasts/pub9.m4a -->
+    <!-- [9] HAS PODCAST — Publication [4] (MFPINN) — hosted on Google Drive -->
     <li class="pub-item">
       <span class="pub-num">[9]</span>
       <div>
@@ -429,8 +429,8 @@
     <div class="contact-block">
       <h3>Email</h3>
       <p>
-        <a href="mailto:nur.mk@tcd.ie">nur.mk@tcd.ie</a><br>
-        <a href="mailto:findmussa@gmail.com">findmussa@gmail.com</a>
+        <a href="/cdn-cgi/l/email-protection#117f64633f7c7a516572753f7874"><span class="__cf_email__" data-cfemail="38564d4a165553784c5b5c16515d">[email&#160;protected]</span></a><br>
+        <a href="/cdn-cgi/l/email-protection#6a0c03040e071f19190b2a0d070b030644090507"><span class="__cf_email__" data-cfemail="e6808f88828b93959587a6818b878f8ac885898b">[email&#160;protected]</span></a>
       </p>
     </div>
     <div class="contact-block">
@@ -457,16 +457,21 @@
 
 <footer>© 2026 Nur M. M. Kalimullah · Trinity College Dublin · Research Fellow, Civil, Structural &amp; Environmental Engineering</footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /*
-  PODCAST AUDIO SOURCES
-  Place your .m4a files here:  podcasts/pub1.m4a  and  podcasts/pub9.m4a
-  To add more: add an entry below and copy a player block from pub1 or pub9 in the HTML,
-  renaming every "pub1"/"pub9" to your new key (e.g. "pub3").
+  PODCAST AUDIO SOURCES — hosted on Google Drive
+  pub1 = Publication [12]: MrDMD paper
+  pub9 = Publication [4]:  MFPINN paper
+
+  To add a podcast for a future publication:
+  1. Upload the .m4a to Google Drive, set sharing to "Anyone with the link"
+  2. Get the file ID from the share URL: drive.google.com/file/d/FILE_ID/view
+  3. Add a new entry:  pubX: "https://drive.google.com/uc?export=download&id=FILE_ID"
+  4. Copy a podcast-player HTML block from pub1 or pub9, rename every "pub1"/"pub9" to "pubX"
 */
 const podcastSrc = {
-  pub1: "podcasts/pub1.m4a",
-  pub9: "podcasts/pub9.m4a"
+  pub1: "https://drive.google.com/uc?export=download&id=1Ib17axcYvbougG22FWZvFLTP3jh_uEcx",
+  pub9: "https://drive.google.com/uc?export=download&id=1_979FnVpzcIwgPSwKQkWze_m7SCoB-mk"
 };
 
 const players = {};
@@ -502,22 +507,4 @@ function togglePlay(id) {
 
 function reset(id) {
   document.getElementById("playicon-" + id).innerHTML = '<polygon points="2,1 11,6 2,11"/>';
-  document.getElementById("prog-" + id).value = 0;
-  document.getElementById("time-" + id).textContent = "0:00 / 0:00";
-}
-
-function seek(id, val) {
-  const audio = players[id];
-  if (audio && audio.duration) audio.currentTime = (val / 100) * audio.duration;
-}
-
-function setVol(id, val) { getInstance(id).volume = val / 100; }
-
-function fmt(s) {
-  if (isNaN(s)) return "0:00";
-  const m = Math.floor(s / 60), sec = Math.floor(s % 60);
-  return m + ":" + (sec < 10 ? "0" : "") + sec;
-}
-</script>
-</body>
-</html>
+  document.getElement
