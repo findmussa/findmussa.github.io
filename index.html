@@ -1,10 +1,493 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Welcome to My Website</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nur M. M. Kalimullah — Research Fellow, Trinity College Dublin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #003366; --gold: #8B6914; --accent: #1d6fa4;
+      --text: #1a1a1a; --muted: #5a6577; --border: rgba(0,0,0,0.1);
+      --bg: #fafaf8; --surface: #ffffff;
+    }
+    body { font-family: 'EB Garamond', Georgia, serif; background: var(--bg); color: var(--text); font-size: 17px; line-height: 1.7; }
+    nav { position: sticky; top: 0; z-index: 100; background: var(--navy); padding: 0 3rem; display: flex; align-items: center; justify-content: space-between; height: 56px; border-bottom: 3px solid var(--gold); }
+    .nav-name { font-family: 'EB Garamond', serif; color: #fff; font-size: 15px; letter-spacing: 0.04em; }
+    .nav-links { display: flex; gap: 1.8rem; }
+    .nav-links a { color: rgba(255,255,255,0.8); font-family: 'DM Mono', monospace; font-size: 11.5px; text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    section { padding: 4rem 3rem; max-width: 880px; margin: 0 auto; }
+    section + section { border-top: 0.5px solid var(--border); }
+    .hero { display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: start; padding-top: 4.5rem; }
+    .hero-text h1 { font-size: 2.5rem; font-weight: 400; color: var(--navy); line-height: 1.18; margin-bottom: 0.3rem; }
+    .subtitle-tag { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.2rem; }
+    .affil { font-size: 15px; color: var(--muted); margin-bottom: 0.4rem; display: flex; align-items: center; gap: 8px; }
+    .affil::before { content: ''; display: inline-block; width: 16px; height: 2px; background: var(--gold); flex-shrink: 0; }
+    .bio { font-size: 16px; color: #2c3a4a; max-width: 530px; line-height: 1.75; margin-top: 1.2rem; }
+    .avatar { width: 140px; height: 140px; border-radius: 50%; border: 3px solid var(--navy); flex-shrink: 0; background: #d6eaf6; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
+    .avatar-initials { font-family: 'EB Garamond', serif; font-size: 40px; color: var(--navy); }
+    .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.4rem; }
+    .pill { font-family: 'DM Mono', monospace; font-size: 11px; padding: 5px 13px; border-radius: 20px; border: 0.5px solid var(--border); color: var(--muted); background: var(--surface); text-decoration: none; transition: all 0.2s; }
+    .pill:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+    h2 { font-size: 1.3rem; font-weight: 400; color: var(--navy); margin-bottom: 1.8rem; padding-bottom: 0.5rem; border-bottom: 1.5px solid var(--gold); }
+    .sec-num { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gold); letter-spacing: 0.06em; margin-right: 6px; }
+    .interest-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 2.5rem; }
+    .interest-tag { font-family: 'DM Mono', monospace; font-size: 11.5px; padding: 5px 14px; border-radius: 20px; background: #e8f1f8; color: var(--navy); border: 0.5px solid #b5cfe0; }
+    .interest-tag.green { background: #e6f3ec; color: #1a5c35; border-color: #a8d5bc; }
+    h3.sub { font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); margin: 2rem 0 1rem; }
+    .pub-list { list-style: none; }
+    .pub-item { padding: 1rem 0; border-bottom: 0.5px solid var(--border); display: grid; grid-template-columns: 38px 1fr; gap: 1rem; align-items: start; }
+    .pub-num { font-family: 'DM Mono', monospace; font-size: 11.5px; color: var(--gold); padding-top: 3px; }
+    .pub-title { font-size: 15px; color: var(--text); font-style: italic; margin-bottom: 3px; }
+    .pub-title a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+    .pub-title a:hover { color: var(--navy); text-decoration: underline; }
+    .pub-authors { font-size: 13px; color: var(--muted); margin-bottom: 3px; }
+    .pub-venue { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent); }
+    .pub-meta { display: flex; align-items: center; gap: 10px; margin-top: 6px; flex-wrap: wrap; }
+    .doi-link { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent); text-decoration: none; border: 0.5px solid #b5cfe0; border-radius: 12px; padding: 2px 9px; transition: all 0.2s; white-space: nowrap; }
+    .doi-link:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+
+    /* ── Podcast mini-player ── */
+    .podcast-player { background: #f0f5fb; border: 0.5px solid #b5cfe0; border-radius: 8px; padding: 7px 11px; margin-top: 10px; max-width: 460px; }
+    .podcast-row { display: flex; align-items: center; gap: 9px; }
+    .play-btn { width: 28px; height: 28px; border-radius: 50%; background: var(--navy); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.2s; }
+    .play-btn:hover { background: #1a5090; }
+    .play-btn svg { width: 11px; height: 11px; fill: #fff; }
+    .pod-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+    .podcast-progress { flex: 1; height: 4px; -webkit-appearance: none; appearance: none; background: #c8d8e8; border-radius: 2px; outline: none; cursor: pointer; min-width: 0; }
+    .podcast-progress::-webkit-slider-thumb { -webkit-appearance: none; width: 12px; height: 12px; border-radius: 50%; background: var(--navy); cursor: pointer; }
+    .podcast-time { font-family: 'DM Mono', monospace; font-size: 10.5px; color: var(--muted); white-space: nowrap; min-width: 78px; }
+    .volume-row { display: flex; align-items: center; gap: 7px; margin-top: 5px; padding-left: 37px; }
+    .vol-icon { width: 13px; height: 13px; flex-shrink: 0; }
+    .volume-slider { width: 72px; height: 3px; -webkit-appearance: none; appearance: none; background: #c8d8e8; border-radius: 2px; outline: none; cursor: pointer; }
+    .volume-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 11px; height: 11px; border-radius: 50%; background: var(--navy); cursor: pointer; }
+
+    .cv-row { display: grid; grid-template-columns: 140px 1fr; gap: 1rem; padding: 0.9rem 0; border-bottom: 0.5px solid var(--border); }
+    .cv-yr { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--gold); padding-top: 2px; }
+    .cv-role { font-size: 15.5px; color: var(--text); margin-bottom: 2px; }
+    .cv-where { font-size: 13.5px; color: var(--muted); }
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+    .skill-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; }
+    .skill-card .skill-label { font-family: 'DM Mono', monospace; font-size: 10.5px; color: var(--gold); letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 6px; }
+    .skill-card p { font-size: 14px; color: var(--text); line-height: 1.6; }
+    .teaching-row { display: flex; justify-content: space-between; align-items: baseline; padding: 0.8rem 0; border-bottom: 0.5px solid var(--border); gap: 1rem; }
+    .teaching-row .t-name { font-size: 15px; color: var(--text); }
+    .teaching-row .t-meta { font-family: 'DM Mono', monospace; font-size: 11.5px; color: var(--muted); white-space: nowrap; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .contact-block h3 { font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); margin-bottom: 0.5rem; }
+    .contact-block p { font-size: 15px; color: var(--text); line-height: 1.7; }
+    .contact-block a { color: var(--accent); text-decoration: none; }
+    .placeholder-text { font-style: italic; color: var(--muted); font-size: 14px; }
+    footer { background: var(--navy); color: rgba(255,255,255,0.45); font-family: 'DM Mono', monospace; font-size: 11px; text-align: center; padding: 1.4rem; border-top: 2px solid var(--gold); }
+    @media (max-width: 620px) {
+      nav { padding: 0 1rem; } .nav-links { gap: 1rem; }
+      section { padding: 2.5rem 1.2rem; }
+      .hero { grid-template-columns: 1fr; } .avatar { width: 80px; height: 80px; }
+      .avatar-initials { font-size: 26px; }
+      .skills-grid, .contact-grid { grid-template-columns: 1fr; }
+      .cv-row { grid-template-columns: 110px 1fr; }
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello World!</h1>
-  <p>This is my personal website hosted with GitHub Pages.</p>
+
+<nav>
+  <span class="nav-name">Nur M. M. Kalimullah</span>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#research">Research</a>
+    <a href="#cv">CV</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section id="about">
+  <div class="hero">
+    <div class="hero-text">
+      <p class="subtitle-tag">Research Fellow (Post-Doc)</p>
+      <h1>Nur M. M. Kalimullah</h1>
+      <p class="affil">Dept. of Civil, Structural &amp; Environmental Engineering</p>
+      <p class="affil">Trinity College Dublin, Ireland</p>
+      <p class="bio">I am a Research Fellow at Trinity College Dublin working at the intersection of structural dynamics, physics-informed machine learning, and renewable energy systems. My research spans structural health monitoring, digital twin development for wind turbines, probabilistic ML for composite materials, and wave-based non-destructive evaluation.</p>
+      <div class="pills">
+        <a href="mailto:nur.mk@tcd.ie" class="pill">✉ nur.mk@tcd.ie</a>
+        <a href="https://linkedin.com/in/findmussa" class="pill">LinkedIn</a>
+        <a href="https://scholar.google.com" class="pill">Google Scholar</a>
+      </div>
+    </div>
+    <!--
+      HOW TO ADD YOUR PHOTO
+      1. Rename your photo to "photo.jpg" (or .png) and place it in the same folder as index.html
+      2. Delete the line: <span class="avatar-initials">NK</span>
+      3. Uncomment the <img> line below (remove the arrow brackets around the comment)
+    -->
+    <div class="avatar">
+      <span class="avatar-initials">NK</span>
+      <!-- <img src="photo.jpg" alt="Nur M. M. Kalimullah" /> -->
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <h2><span class="sec-num">01 —</span> Research Interests</h2>
+  <div class="interest-grid">
+    <span class="interest-tag green">Renewable Energy Systems</span>
+    <span class="interest-tag green">Wind Turbine Dynamics</span>
+    <span class="interest-tag green">Digital Twins</span>
+    <span class="interest-tag">Structural Health Monitoring</span>
+    <span class="interest-tag">Scientific Machine Learning</span>
+    <span class="interest-tag">Probabilistic ML</span>
+    <span class="interest-tag">Dynamical Systems</span>
+    <span class="interest-tag">Acoustics &amp; Ultrasonics</span>
+    <span class="interest-tag">Composite Materials</span>
+    <span class="interest-tag">Physics-Informed Neural Networks</span>
+  </div>
+
+  <h2 style="margin-top:2rem"><span class="sec-num">02 —</span> Publications</h2>
+  <h3 class="sub">Journal Articles</h3>
+  <ul class="pub-list">
+
+    <!-- ══ [1] — HAS PODCAST ══
+         Place your audio file at: podcasts/pub1.m4a
+         To add a podcast to a future publication, copy this player block,
+         change "pub1" in all id/onclick attributes to a new unique id (e.g. "pub3"),
+         and update the src in the podcasts config in the <script> below. -->
+    <li class="pub-item">
+      <span class="pub-num">[1]</span>
+      <div>
+        <p class="pub-authors">Nur M.M. Kalimullah, B. Fitzgerald, A. Habib</p>
+        <p class="pub-title"><a href="https://doi.org/10.1016/j.ymssp.2026.114190" target="_blank" rel="noopener">Deep reconstruction of sparse elastic wavefield and graph-based damage detection for accelerated health monitoring of PZT ceramics</a></p>
+        <p class="pub-venue">Mechanical Systems and Signal Processing, 250, 114190 · 2026</p>
+        <div class="pub-meta">
+          <a class="doi-link" href="https://doi.org/10.1016/j.ymssp.2026.114190" target="_blank" rel="noopener">DOI ↗</a>
+        </div>
+        <div class="podcast-player">
+          <div class="podcast-row">
+            <button class="play-btn" id="playbtn-pub1" onclick="togglePlay('pub1')">
+              <svg id="playicon-pub1" viewBox="0 0 12 12"><polygon points="2,1 11,6 2,11"/></svg>
+            </button>
+            <span class="pod-label">Podcast</span>
+            <input type="range" class="podcast-progress" id="prog-pub1" value="0" min="0" max="100" step="1" oninput="seek('pub1',this.value)">
+            <span class="podcast-time" id="time-pub1">0:00 / 0:00</span>
+          </div>
+          <div class="volume-row">
+            <svg class="vol-icon" viewBox="0 0 13 13" fill="none"><path d="M2 4.5H4.5L7.5 2v9L4.5 8.5H2V4.5Z" fill="#5a6577"/><path d="M9 4.5c.8.6 1.3 1.5 1.3 2.5s-.5 1.9-1.3 2.5" stroke="#5a6577" stroke-width="1" stroke-linecap="round"/></svg>
+            <input type="range" class="volume-slider" id="vol-pub1" value="80" min="0" max="100" step="1" oninput="setVol('pub1',this.value)">
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li class="pub-item">
+      <span class="pub-num">[2]</span>
+      <div>
+        <p class="pub-authors">P. Banerjee, S. Ojha, N.M.M. Kalimullah, A. Shelke, A. Habib</p>
+        <p class="pub-title"><a href="https://doi.org/10.1051/aacus/2025002" target="_blank" rel="noopener">Ultrasonic wave field image augmentation in PZT sensors using generative machine learning and Coulomb coupling</a></p>
+        <p class="pub-venue">Acta Acustica, 9, 15 · 2025</p>
+        <div class="pub-meta"><a class="doi-link" href="https://doi.org/10.1051/aacus/2025002" target="_blank" rel="noopener">DOI ↗</a></div>
+      </div>
+    </li>
+
+    <li class="pub-item">
+      <span class="pub-num">[3]</span>
+      <div>
+        <p class="pub-authors">N.M.M. Kalimullah, S. Ojha, M. Radzieński, A. Shelke, A. Habib</p>
+        <p class="pub-title"><a href="https://doi.org/10.1016/j.ymssp.2024.111872" target="_blank" rel="noopener">A probabilistic machine learning framework for stiffness tensor estimation of carbon composite laminate</a></p>
+        <p class="pub-venue">Mechanical Systems and Signal Processing, 223, 111872 · 2025</p>
+        <div class="pub-meta"><a class="doi-link" href="https://doi.org/10.1016/j.ymssp.2024.111872" target="_blank" rel="noopener">DOI ↗</a></div>
+      </div>
+    </li>
+
+    <li class="pub-item">
+      <span class="pub-num">[4]</span>
+      <div>
+        <p class="pub-authors">S. Nagulapati, A. Thakur, N.M.M. Kalimullah et al.</p>
+        <p class="pub-title"><a href="https://doi.org/10.1115/1.4069097" target="_blank" rel="noopener">A feature-engineering approach to SVM-based damage detection in lead zirconate titanate ceramics via point-contact wavefield measurement</a></p>
+        <p class="pub-venue">Journal of Nondestructive Evaluation, Diagnostics and Prognostics, 8(4) · 2025</p>
+        <div class="pub-meta"><a class="doi-link" href="https://doi.org/10.1115/1.4069097" target="_blank" rel="noopener">DOI ↗</a></div>
+      </div>
+    </li>
+
+    <li class="pub-item">
+      <span class="pub-num">[5]</span>
+      <div>
+        <p class="pub-authors">R. Pal, N. Ghosh, N.M.M. Kalimullah et al.</p>
+        <p class="pub-title"><a href="https://doi.org/10.1016/j.ultras.2024.107516" target="_blank" rel="noopener">Subsurface damage identification and localization in PZT ceramics using point contact excitation and detection: an image processing framework</a></p>
+        <p class="pub-venue">Ultrasonics, 147, 107516 · 2025</p>
+        <div class="pub-meta"><a class="doi-link" href="https://doi.org/10.1016/j.ultras.2024.107516" target="_blank" rel="noopener">DOI ↗</a></div>
+      </div>
+    </li>
+
+    <li class="pub-item">
+      <span class="pub-num">[6]</span>
+      <div>
+        <p class="pub-authors">A. Thakur, N.M.M. Kalimullah, A. Shelke, B. Hazra, T. Kundu</p>
+        <p class="pub-title"><a href="https://doi.org/10.1016/j.wavemoti.2025.103628" target="_blank" rel="noopener">Ultrasonic field estimation for random p- and s-wavenumbers in isotropic solids using DPSM</a></p>
+        <p class="pub-venue">Wave Motion, 139, 103628 · 2025</p>
+        <div class="pub-meta"><a class="doi-link" href="https://doi.org/10.1016/j.wavemoti.2025.103628" target="_blank" rel="noopener">DOI ↗</a></div>
+      </div>
+    </li>
+
+    <li class="pub-item">
+      <span class="pub-num">[7]</span>
+      <div>
+        <p class="pub-authors">A. Thakur, N.M.M. Kalimullah, A. Shelke, B. Hazra, T. Kundu</p>
+        <p class="pub-title"><a href="https://doi.org/10.1016/j.engappai.2023.107828" target="_blank" rel="noopener">NG-DPSM: a neural Green-distributed point source method for modelling ultrasonic field emission near fluid-solid interface using physics-informed neural networks</a></p>
+        <p class="pub-venue">Engineering Applications of Artificial Intelligence, 131, 107828 · 2024</p>
+        <div class="pub-meta"><a class="doi-link" href="https://doi.org/10.1016/j.engappai.2023.107828" target="_blank" rel="noopener">DOI ↗</a></div>
+      </div>
+    </li>
+
+    <li class="pub-item">
+      <span class="pub-num">[8]</span>
+      <div>
+        <p class="pub-authors">N.M.M. Kalimullah, A. Shelke, A. Habib</p>
+        <p class="pub-title"><a href="https://doi.org/10.1088/1361-665X/acee37" target="_blank" rel="noopener">A deep learning approach for anomaly identification in PZT sensors using point contact method</a></p>
+        <p class="pub-venue">Smart Materials and Structures, 32(9), 095027 · 2023</p>
+        <div class="pub-meta"><a class="doi-link" href="https://doi.org/10.1088/1361-665X/acee37" target="_blank" rel="noopener">DOI ↗</a></div>
+      </div>
+    </li>
+
+    <!-- ══ [9] — HAS PODCAST ══
+         Place your audio file at: podcasts/pub9.m4a -->
+    <li class="pub-item">
+      <span class="pub-num">[9]</span>
+      <div>
+        <p class="pub-authors">N.M.M. Kalimullah, A. Shelke, A. Habib</p>
+        <p class="pub-title"><a href="https://doi.org/10.1016/j.ymssp.2023.110360" target="_blank" rel="noopener">A probabilistic framework for source localization in anisotropic composite using transfer learning based multi-fidelity physics-informed neural network (MFPINN)</a></p>
+        <p class="pub-venue">Mechanical Systems and Signal Processing, 197, 110360 · 2023</p>
+        <div class="pub-meta">
+          <a class="doi-link" href="https://doi.org/10.1016/j.ymssp.2023.110360" target="_blank" rel="noopener">DOI ↗</a>
+        </div>
+        <div class="podcast-player">
+          <div class="podcast-row">
+            <button class="play-btn" id="playbtn-pub9" onclick="togglePlay('pub9')">
+              <svg id="playicon-pub9" viewBox="0 0 12 12"><polygon points="2,1 11,6 2,11"/></svg>
+            </button>
+            <span class="pod-label">Podcast</span>
+            <input type="range" class="podcast-progress" id="prog-pub9" value="0" min="0" max="100" step="1" oninput="seek('pub9',this.value)">
+            <span class="podcast-time" id="time-pub9">0:00 / 0:00</span>
+          </div>
+          <div class="volume-row">
+            <svg class="vol-icon" viewBox="0 0 13 13" fill="none"><path d="M2 4.5H4.5L7.5 2v9L4.5 8.5H2V4.5Z" fill="#5a6577"/><path d="M9 4.5c.8.6 1.3 1.5 1.3 2.5s-.5 1.9-1.3 2.5" stroke="#5a6577" stroke-width="1" stroke-linecap="round"/></svg>
+            <input type="range" class="volume-slider" id="vol-pub9" value="80" min="0" max="100" step="1" oninput="setVol('pub9',this.value)">
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li class="pub-item">
+      <span class="pub-num">[10]</span>
+      <div>
+        <p class="pub-authors">N.M.M. Kalimullah, K. Shukla, A. Shelke, A. Habib</p>
+        <p class="pub-title"><a href="https://doi.org/10.1016/j.ultras.2023.106939" target="_blank" rel="noopener">Stiffness tensor estimation of anisotropic crystal using point contact method and unscented Kalman filter</a></p>
+        <p class="pub-venue">Ultrasonics, 131, 106939 · 2023</p>
+        <div class="pub-meta"><a class="doi-link" href="https://doi.org/10.1016/j.ultras.2023.106939" target="_blank" rel="noopener">DOI ↗</a></div>
+      </div>
+    </li>
+
+    <li class="pub-item">
+      <span class="pub-num">[11]</span>
+      <div>
+        <p class="pub-authors">S. Ojha, N.M.M. Kalimullah, A. Shelke</p>
+        <p class="pub-title"><a href="https://doi.org/10.1002/stc.3115" target="_blank" rel="noopener">Application of constrained unscented Kalman filter (CUKF) for system identification of coupled hysteresis under bidirectional excitation</a></p>
+        <p class="pub-venue">Structural Control and Health Monitoring, 29(12), e3115 · 2022</p>
+        <div class="pub-meta"><a class="doi-link" href="https://doi.org/10.1002/stc.3115" target="_blank" rel="noopener">DOI ↗</a></div>
+      </div>
+    </li>
+
+    <li class="pub-item">
+      <span class="pub-num">[12]</span>
+      <div>
+        <p class="pub-authors">N.M.M. Kalimullah, A. Shelke, A. Habib</p>
+        <p class="pub-title"><a href="https://doi.org/10.1109/ACCESS.2021.3108440" target="_blank" rel="noopener">Multiresolution dynamic mode decomposition (MrDMD) of elastic waves for damage localisation in piezoelectric ceramic</a></p>
+        <p class="pub-venue">IEEE Access, 9, 120512–120524 · 2021</p>
+        <div class="pub-meta"><a class="doi-link" href="https://doi.org/10.1109/ACCESS.2021.3108440" target="_blank" rel="noopener">DOI ↗</a></div>
+      </div>
+    </li>
+  </ul>
+
+  <h3 class="sub">Conference Proceedings</h3>
+  <ul class="pub-list">
+    <li class="pub-item">
+      <span class="pub-num">[13]</span>
+      <div>
+        <p class="pub-authors">P. Banerjee, P. Saxena, N.M.M. Kalimullah, A. Shelke, A. Habib</p>
+        <p class="pub-title"><a href="https://doi.org/10.1109/CVPRW63382.2024.00011" target="_blank" rel="noopener">Damage detection and localization by learning deep features of elastic waves in piezoelectric ceramic using point contact method</a></p>
+        <p class="pub-venue">IEEE/CVF CVPRW · 2024</p>
+        <div class="pub-meta"><a class="doi-link" href="https://doi.org/10.1109/CVPRW63382.2024.00011" target="_blank" rel="noopener">DOI ↗</a></div>
+      </div>
+    </li>
+    <li class="pub-item">
+      <span class="pub-num">[14]</span>
+      <div>
+        <p class="pub-authors">N.M.M. Kalimullah, S. Ojha, A. Shelke, A. Habib</p>
+        <p class="pub-title"><a href="https://doi.org/10.1115/QNDE2023-108711" target="_blank" rel="noopener">Acoustic emission source localization in plates through support vector machine with genetic optimization</a></p>
+        <p class="pub-venue">50th Annual Review of Progress in Quantitative NDE · 2023</p>
+        <div class="pub-meta"><a class="doi-link" href="https://doi.org/10.1115/QNDE2023-108711" target="_blank" rel="noopener">DOI ↗</a></div>
+      </div>
+    </li>
+    <li class="pub-item">
+      <span class="pub-num">[15]</span>
+      <div>
+        <p class="pub-authors">N.M.M. Kalimullah, A. Shelke, A. Habib</p>
+        <p class="pub-title"><a href="https://doi.org/10.24492/use.42.0_3Pb1-4" target="_blank" rel="noopener">Bayesian filtering for parameter estimation of mechanical properties of isotropic material</a></p>
+        <p class="pub-venue">Symposium on Ultrasonic Electronics, Vol. 42 · 2021</p>
+        <div class="pub-meta"><a class="doi-link" href="https://doi.org/10.24492/use.42.0_3Pb1-4" target="_blank" rel="noopener">DOI ↗</a></div>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<section id="cv">
+  <h2><span class="sec-num">03 —</span> CV</h2>
+  <h3 class="sub">Experience</h3>
+  <div class="cv-row">
+    <span class="cv-yr">Jan 2025 – Present</span>
+    <div><p class="cv-role">Research Fellow (Post-Doc)</p><p class="cv-where">Dept. of Civil, Structural &amp; Environmental Engineering, Trinity College Dublin, Ireland</p></div>
+  </div>
+  <div class="cv-row">
+    <span class="cv-yr">Aug – Dec 2024</span>
+    <div><p class="cv-role">Guest Faculty</p><p class="cv-where">Dept. of Civil Engineering, NERIST, Arunachal Pradesh, India</p></div>
+  </div>
+  <h3 class="sub">Education</h3>
+  <div class="cv-row">
+    <span class="cv-yr">Nov 2024</span>
+    <div><p class="cv-role">PhD, Structural Engineering</p><p class="cv-where">Indian Institute of Technology Guwahati (IITG), India</p></div>
+  </div>
+  <div class="cv-row">
+    <span class="cv-yr">May 2018</span>
+    <div><p class="cv-role">B.Tech., Civil Engineering</p><p class="cv-where">NERIST, Arunachal Pradesh, India</p></div>
+  </div>
+  <h3 class="sub">Skills</h3>
+  <div class="skills-grid" style="margin-top:0.5rem">
+    <div class="skill-card"><p class="skill-label">CAD / CAE</p><p>AutoCAD · SAP2000 · STAAD.Pro</p></div>
+    <div class="skill-card"><p class="skill-label">Programming</p><p>MATLAB · Python</p></div>
+    <div class="skill-card"><p class="skill-label">ML Stack</p><p>PyTorch · TensorFlow · scikit-learn · pandas · NumPy</p></div>
+  </div>
+  <h3 class="sub">Professional Memberships</h3>
+  <div class="cv-row"><span class="cv-yr">ASCE</span><div><p class="cv-where">Associate Member, American Society of Civil Engineers</p></div></div>
+  <div class="cv-row"><span class="cv-yr">ACI</span><div><p class="cv-where">Student Member, American Concrete Institute</p></div></div>
+  <div class="cv-row"><span class="cv-yr">IEEE</span><div><p class="cv-where">Student Member, Institute of Electrical and Electronics Engineers</p></div></div>
+  <h3 class="sub">Journal Reviewer</h3>
+  <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:0.3rem">
+    <span class="interest-tag">Mech. Systems &amp; Signal Processing</span>
+    <span class="interest-tag">Smart Materials &amp; Structures</span>
+    <span class="interest-tag">ML Science &amp; Technology</span>
+    <span class="interest-tag">Measurement Science &amp; Tech.</span>
+    <span class="interest-tag">Ultrasonics</span>
+    <span class="interest-tag">J. of NDE, Diagnostics &amp; Prognostics</span>
+  </div>
+</section>
+
+<section id="teaching">
+  <h2><span class="sec-num">04 —</span> Teaching &amp; Responsibilities</h2>
+  <div class="teaching-row"><span class="t-name">Guest Faculty — Civil Engineering</span><span class="t-meta">NERIST · Aug–Dec 2024</span></div>
+  <div class="teaching-row"><span class="t-name">General Secretary, CEAN</span><span class="t-meta">Civil Engineering Association, NERIST</span></div>
+  <div class="teaching-row"><span class="t-name">Organising Member — TEDx NERIST</span><span class="t-meta">NERIST</span></div>
+  <div class="teaching-row"><span class="t-name">Organising Secretary — SHRISTI'18</span><span class="t-meta">Annual techno-management festival · 2018</span></div>
+</section>
+
+<section id="contact">
+  <h2><span class="sec-num">05 —</span> Contact</h2>
+  <div class="contact-grid">
+    <div class="contact-block">
+      <h3>Email</h3>
+      <p><a href="mailto:nur.mk@tcd.ie">nur.mk@tcd.ie</a><br><a href="mailto:findmussa@gmail.com">findmussa@gmail.com</a></p>
+    </div>
+    <div class="contact-block">
+      <h3>Phone</h3>
+      <!-- Replace with your office number when available, e.g.: <p>+353 1 XXX XXXX</p> -->
+      <p class="placeholder-text">Office phone — to be added</p>
+    </div>
+    <div class="contact-block">
+      <h3>Address</h3>
+      <p>Dept. of Civil, Structural &amp; Environmental Engineering<br>Trinity College Dublin<br>Dublin 2, Ireland</p>
+    </div>
+    <div class="contact-block">
+      <h3>Online</h3>
+      <p><a href="https://linkedin.com/in/findmussa">linkedin.com/in/findmussa</a><br><a href="#">Google Scholar Profile</a></p>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Nur M. M. Kalimullah · Trinity College Dublin · Research Fellow, Civil, Structural &amp; Environmental Engineering</footer>
+
+<script>
+/*
+  ════════════════════════════════════════════════════
+  PODCAST AUDIO SOURCES
+  ════════════════════════════════════════════════════
+  1. Create a folder called "podcasts/" next to index.html
+  2. Place your .m4a files there with these exact names:
+       podcasts/pub1.m4a   → for publication [1]
+       podcasts/pub9.m4a   → for publication [9]
+
+  TO ADD A PODCAST TO A FUTURE PUBLICATION:
+  a) Copy a podcast-player <div> block from [1] or [9] in the HTML
+  b) Replace every "pub1" / "pub9" in that block with a new key, e.g. "pub3"
+  c) Add a matching entry below:  pub3: "podcasts/pub3.m4a"
+  ════════════════════════════════════════════════════
+*/
+const podcastSrc = {
+  pub1: "podcasts/pub1.m4a",
+  pub9: "podcasts/pub9.m4a"
+};
+
+const players = {};
+
+function getInstance(id) {
+  if (!players[id]) {
+    const audio = new Audio(podcastSrc[id]);
+    audio.volume = 0.8;
+    audio.addEventListener("timeupdate", () => {
+      if (!audio.duration) return;
+      document.getElementById("prog-" + id).value = Math.round((audio.currentTime / audio.duration) * 100);
+      document.getElementById("time-" + id).textContent = fmt(audio.currentTime) + " / " + fmt(audio.duration);
+    });
+    audio.addEventListener("ended", () => reset(id));
+    players[id] = audio;
+  }
+  return players[id];
+}
+
+function togglePlay(id) {
+  const audio = getInstance(id);
+  if (audio.paused) {
+    Object.keys(players).forEach(k => {
+      if (k !== id && !players[k].paused) { players[k].pause(); reset(k); }
+    });
+    audio.play();
+    document.getElementById("playicon-" + id).innerHTML = '<rect x="2" y="1" width="3" height="10"/><rect x="7" y="1" width="3" height="10"/>';
+  } else {
+    audio.pause();
+    document.getElementById("playicon-" + id).innerHTML = '<polygon points="2,1 11,6 2,11"/>';
+  }
+}
+
+function reset(id) {
+  document.getElementById("playicon-" + id).innerHTML = '<polygon points="2,1 11,6 2,11"/>';
+  document.getElementById("prog-" + id).value = 0;
+  document.getElementById("time-" + id).textContent = "0:00 / 0:00";
+}
+
+function seek(id, val) {
+  const audio = players[id];
+  if (audio && audio.duration) audio.currentTime = (val / 100) * audio.duration;
+}
+
+function setVol(id, val) { getInstance(id).volume = val / 100; }
+
+function fmt(s) {
+  if (isNaN(s)) return "0:00";
+  const m = Math.floor(s / 60), sec = Math.floor(s % 60);
+  return m + ":" + (sec < 10 ? "0" : "") + sec;
+}
+</script>
 </body>
 </html>
