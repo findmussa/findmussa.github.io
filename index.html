@@ -147,7 +147,7 @@
       <p class="affil">Trinity College Dublin, Ireland</p>
       <p class="bio">I am a Research Fellow at Trinity College Dublin working at the intersection of structural dynamics, physics-informed machine learning, and renewable energy systems. My research spans structural health monitoring, digital twin development for wind turbines, probabilistic ML for composite materials, and wave-based non-destructive evaluation.</p>
       <div class="pills">
-        <a href="/cdn-cgi/l/email-protection#19776c6b377472596d7a7d37707c" class="pill">✉ <span class="__cf_email__" data-cfemail="46283334682b2d06322522682f23">[email&#160;protected]</span></a>
+        <a href="#" id="hero-email-pill" class="pill"></a>
         <a href="https://linkedin.com/in/findmussa" target="_blank" rel="noopener" class="pill">LinkedIn</a>
         <a href="https://scholar.google.com/citations?user=yrrCtqwAAAAJ&hl=en" target="_blank" rel="noopener" class="pill">Google Scholar</a>
       </div>
@@ -440,8 +440,8 @@
     <div class="contact-block">
       <h3>Email</h3>
       <p>
-        <a href="/cdn-cgi/l/email-protection#59372c2b773432192d3a3d77303c"><span class="__cf_email__" data-cfemail="d2bca7a0fcbfb992a6b1b6fcbbb7">[email&#160;protected]</span></a><br>
-        <a href="/cdn-cgi/l/email-protection#f197989f959c84828290b1969c90989ddf929e9c"><span class="__cf_email__" data-cfemail="395f50575d544c4a4a58795e54585055175a5654">[email&#160;protected]</span></a>
+        <a href="#" id="contact-email-1"></a><br>
+        <a href="#" id="contact-email-2"></a>
       </p>
     </div>
     <div class="contact-block">
@@ -468,7 +468,7 @@
 
 <footer>© 2026 Nur M. M. Kalimullah · Trinity College Dublin · Research Fellow, Civil, Structural &amp; Environmental Engineering</footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const podcastSrc = {
   pub1: "https://res.cloudinary.com/dovrzy36j/video/upload/q_auto/f_auto/v1775079682/pub12_tqqpoq.mp4",
   pub9: "https://res.cloudinary.com/dovrzy36j/video/upload/q_auto/f_auto/v1775079699/pub4_ayl2cz.mp4"
@@ -512,4 +512,34 @@ function skipTime(id, secs) {
 
 function reset(id) {
   document.getElementById("playicon-" + id).innerHTML = '<polygon points="2,1 11,6 2,11"/>';
-  do
+  document.getElementById("prog-" + id).value = 0;
+  document.getElementById("time-" + id).textContent = "0:00 / 0:00";
+}
+
+function seek(id, val) {
+  const audio = players[id];
+  if (audio && audio.duration) audio.currentTime = (val / 100) * audio.duration;
+}
+
+function setVol(id, val) { getInstance(id).volume = val / 100; }
+
+function fmt(s) {
+  if (isNaN(s)) return "0:00";
+  const m = Math.floor(s / 60), sec = Math.floor(s % 60);
+  return m + ":" + (sec < 10 ? "0" : "") + sec;
+}
+</script>
+<script>
+(function() {
+  var e1 = ["nur.mk", "tcd.ie"].join("@");
+  var e2 = ["findmussa", "gmail.com"].join("@");
+  var pill = document.getElementById("hero-email-pill");
+  if (pill) { pill.href = "mail" + "to:" + e1; pill.textContent = "\u2709 " + e1; }
+  var c1 = document.getElementById("contact-email-1");
+  if (c1) { c1.href = "mail" + "to:" + e1; c1.textContent = e1; }
+  var c2 = document.getElementById("contact-email-2");
+  if (c2) { c2.href = "mail" + "to:" + e2; c2.textContent = e2; }
+})();
+</script>
+</body>
+</html>
