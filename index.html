@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     :root {
       --navy: #003366; --gold: #8B6914; --accent: #1d6fa4;
       --text: #1a1a1a; --muted: #5a6577; --border: rgba(0,0,0,0.1);
@@ -71,10 +72,14 @@
 
     /* PODCAST PLAYER */
     .podcast-player { background: #f0f5fb; border: 0.5px solid #b5cfe0; border-radius: 8px; padding: 7px 11px; margin-top: 10px; max-width: 460px; }
-    .podcast-row { display: flex; align-items: center; gap: 9px; }
+    .podcast-row { display: flex; align-items: center; gap: 7px; }
     .play-btn { width: 28px; height: 28px; border-radius: 50%; background: var(--navy); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.2s; }
     .play-btn:hover { background: #1a5090; }
     .play-btn svg { width: 11px; height: 11px; fill: #fff; }
+    .skip-btn { width: 26px; height: 26px; border-radius: 50%; background: transparent; border: 0.5px solid #b5cfe0; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; padding: 0; }
+    .skip-btn:hover { background: var(--navy); border-color: var(--navy); }
+    .skip-btn:hover svg { fill: #fff; stroke: #fff; }
+    .skip-btn svg { width: 14px; height: 14px; fill: var(--navy); stroke: var(--navy); }
     .pod-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
     .podcast-progress { flex: 1; height: 4px; -webkit-appearance: none; appearance: none; background: #c8d8e8; border-radius: 2px; outline: none; cursor: pointer; min-width: 0; }
     .podcast-progress::-webkit-slider-thumb { -webkit-appearance: none; width: 12px; height: 12px; border-radius: 50%; background: var(--navy); cursor: pointer; }
@@ -119,7 +124,7 @@
 <body>
 
 <nav>
-  <span class="nav-name">Nur M. M. Kalimullah</span>
+  <a href="#" class="nav-name" style="text-decoration:none;">Dr. Kalimullah</a>
   <div class="nav-links">
     <a href="#about">About</a>
     <a href="#experience">Experience</a>
@@ -137,12 +142,12 @@
   <div class="hero">
     <div class="hero-text">
       <p class="subtitle-tag">Research Fellow (Post-Doc)</p>
-      <h1>Nur M. M. Kalimullah</h1>
+      <h1>Nur M. M. Kalimullah, PhD</h1>
       <p class="affil">Dept. of Civil, Structural &amp; Environmental Engineering</p>
       <p class="affil">Trinity College Dublin, Ireland</p>
       <p class="bio">I am a Research Fellow at Trinity College Dublin working at the intersection of structural dynamics, physics-informed machine learning, and renewable energy systems. My research spans structural health monitoring, digital twin development for wind turbines, probabilistic ML for composite materials, and wave-based non-destructive evaluation.</p>
       <div class="pills">
-        <a href="/cdn-cgi/l/email-protection#47293235692a2c07332423692e22" class="pill">✉ <span class="__cf_email__" data-cfemail="d2bca7a0fcbfb992a6b1b6fcbbb7">[email&#160;protected]</span></a>
+        <a href="/cdn-cgi/l/email-protection#19776c6b377472596d7a7d37707c" class="pill">✉ <span class="__cf_email__" data-cfemail="46283334682b2d06322522682f23">[email&#160;protected]</span></a>
         <a href="https://linkedin.com/in/findmussa" target="_blank" rel="noopener" class="pill">LinkedIn</a>
         <a href="https://scholar.google.com/citations?user=yrrCtqwAAAAJ&hl=en" target="_blank" rel="noopener" class="pill">Google Scholar</a>
       </div>
@@ -154,8 +159,8 @@
       3. Uncomment the <img> line below
     -->
     <div class="avatar">
-      <span class="avatar-initials">NK</span>
-      <!-- <img src="photo.jpg" alt="Nur M. M. Kalimullah" /> -->
+      <!-- <span class="avatar-initials">NK</span> -->
+      <img src="image.jpg" alt="Nur M. M. Kalimullah" />
     </div>
   </div>
 </section>
@@ -178,7 +183,7 @@
   <h2><span class="sec-num">02 —</span> Education</h2>
   <div class="cv-row">
     <span class="cv-yr">Nov 2024</span>
-    <div><p class="cv-role">PhD, Structural Engineering</p><p class="cv-where">Indian Institute of Technology Guwahati (IITG), India</p></div>
+    <div><p class="cv-role">PhD, Structural Engineering</p><p class="cv-where">Indian Institute of Technology Guwahati (IITG), Assam, India</p></div>
   </div>
   <div class="cv-row">
     <span class="cv-yr">May 2018</span>
@@ -219,9 +224,11 @@
         <p class="pub-venue">Mechanical Systems and Signal Processing, 250, 114190 · 2026</p>
         <div class="pub-meta"><a class="doi-link" href="https://doi.org/10.1016/j.ymssp.2026.114190" target="_blank" rel="noopener">DOI ↗</a></div>
         <div class="podcast-player">
+          <div style="font-family:'DM Mono',monospace; font-size:10.5px; color:var(--gold); text-transform:uppercase; letter-spacing:0.07em; margin-bottom:6px;">🎙 Research Podcast</div>
           <div class="podcast-row">
             <button class="play-btn" id="playbtn-pub1" onclick="togglePlay('pub1')"><svg id="playicon-pub1" viewBox="0 0 12 12"><polygon points="2,1 11,6 2,11"/></svg></button>
-            <span class="pod-label">Podcast</span>
+            <button class="skip-btn" onclick="skipTime('pub1',-10)" title="-10s"><svg viewBox="0 0 16 16" fill="none" stroke-width="1.2"><path d="M8 3.5A4.5 4.5 0 1 0 12.5 8" stroke-linecap="round"/><path d="M8 1.5L5.5 3.5 8 5.5" stroke-linecap="round" stroke-linejoin="round"/><text x="4.5" y="10.5" font-size="4.5" fill="currentColor" stroke="none" font-family="monospace">10</text></svg></button>
+            <button class="skip-btn" onclick="skipTime('pub1',10)" title="+10s"><svg viewBox="0 0 16 16" fill="none" stroke-width="1.2"><path d="M8 3.5A4.5 4.5 0 1 1 3.5 8" stroke-linecap="round"/><path d="M8 1.5L10.5 3.5 8 5.5" stroke-linecap="round" stroke-linejoin="round"/><text x="4.5" y="10.5" font-size="4.5" fill="currentColor" stroke="none" font-family="monospace">10</text></svg></button>
             <input type="range" class="podcast-progress" id="prog-pub1" value="0" min="0" max="100" step="1" oninput="seek('pub1',this.value)">
             <span class="podcast-time" id="time-pub1">0:00 / 0:00</span>
           </div>
@@ -229,6 +236,7 @@
             <svg class="vol-icon" viewBox="0 0 13 13" fill="none"><path d="M2 4.5H4.5L7.5 2v9L4.5 8.5H2V4.5Z" fill="#5a6577"/><path d="M9 4.5c.8.6 1.3 1.5 1.3 2.5s-.5 1.9-1.3 2.5" stroke="#5a6577" stroke-width="1" stroke-linecap="round"/></svg>
             <input type="range" class="volume-slider" id="vol-pub1" value="80" min="0" max="100" step="1" oninput="setVol('pub1',this.value)">
           </div>
+          <div style="margin-top:7px; font-family:'DM Mono',monospace; font-size:10px; color:var(--muted); line-height:1.5; border-top:0.5px solid #c8d8e8; padding-top:6px;">⚠ AI-generated audio. Content may contain inaccuracies — please read the original paper for authoritative information.</div>
         </div>
       </div>
     </li>
@@ -312,9 +320,11 @@
         <p class="pub-venue">Mechanical Systems and Signal Processing, 197, 110360 · 2023</p>
         <div class="pub-meta"><a class="doi-link" href="https://doi.org/10.1016/j.ymssp.2023.110360" target="_blank" rel="noopener">DOI ↗</a></div>
         <div class="podcast-player">
+          <div style="font-family:'DM Mono',monospace; font-size:10.5px; color:var(--gold); text-transform:uppercase; letter-spacing:0.07em; margin-bottom:6px;">🎙 Research Podcast</div>
           <div class="podcast-row">
             <button class="play-btn" id="playbtn-pub9" onclick="togglePlay('pub9')"><svg id="playicon-pub9" viewBox="0 0 12 12"><polygon points="2,1 11,6 2,11"/></svg></button>
-            <span class="pod-label">Podcast</span>
+            <button class="skip-btn" onclick="skipTime('pub9',-10)" title="-10s"><svg viewBox="0 0 16 16" fill="none" stroke-width="1.2"><path d="M8 3.5A4.5 4.5 0 1 0 12.5 8" stroke-linecap="round"/><path d="M8 1.5L5.5 3.5 8 5.5" stroke-linecap="round" stroke-linejoin="round"/><text x="4.5" y="10.5" font-size="4.5" fill="currentColor" stroke="none" font-family="monospace">10</text></svg></button>
+            <button class="skip-btn" onclick="skipTime('pub9',10)" title="+10s"><svg viewBox="0 0 16 16" fill="none" stroke-width="1.2"><path d="M8 3.5A4.5 4.5 0 1 1 3.5 8" stroke-linecap="round"/><path d="M8 1.5L10.5 3.5 8 5.5" stroke-linecap="round" stroke-linejoin="round"/><text x="4.5" y="10.5" font-size="4.5" fill="currentColor" stroke="none" font-family="monospace">10</text></svg></button>
             <input type="range" class="podcast-progress" id="prog-pub9" value="0" min="0" max="100" step="1" oninput="seek('pub9',this.value)">
             <span class="podcast-time" id="time-pub9">0:00 / 0:00</span>
           </div>
@@ -322,6 +332,7 @@
             <svg class="vol-icon" viewBox="0 0 13 13" fill="none"><path d="M2 4.5H4.5L7.5 2v9L4.5 8.5H2V4.5Z" fill="#5a6577"/><path d="M9 4.5c.8.6 1.3 1.5 1.3 2.5s-.5 1.9-1.3 2.5" stroke="#5a6577" stroke-width="1" stroke-linecap="round"/></svg>
             <input type="range" class="volume-slider" id="vol-pub9" value="80" min="0" max="100" step="1" oninput="setVol('pub9',this.value)">
           </div>
+          <div style="margin-top:7px; font-family:'DM Mono',monospace; font-size:10px; color:var(--muted); line-height:1.5; border-top:0.5px solid #c8d8e8; padding-top:6px;">⚠ AI-generated audio. Content may contain inaccuracies — please read the original paper for authoritative information.</div>
         </div>
       </div>
     </li>
@@ -429,8 +440,8 @@
     <div class="contact-block">
       <h3>Email</h3>
       <p>
-        <a href="/cdn-cgi/l/email-protection#117f64633f7c7a516572753f7874"><span class="__cf_email__" data-cfemail="38564d4a165553784c5b5c16515d">[email&#160;protected]</span></a><br>
-        <a href="/cdn-cgi/l/email-protection#6a0c03040e071f19190b2a0d070b030644090507"><span class="__cf_email__" data-cfemail="e6808f88828b93959587a6818b878f8ac885898b">[email&#160;protected]</span></a>
+        <a href="/cdn-cgi/l/email-protection#59372c2b773432192d3a3d77303c"><span class="__cf_email__" data-cfemail="d2bca7a0fcbfb992a6b1b6fcbbb7">[email&#160;protected]</span></a><br>
+        <a href="/cdn-cgi/l/email-protection#f197989f959c84828290b1969c90989ddf929e9c"><span class="__cf_email__" data-cfemail="395f50575d544c4a4a58795e54585055175a5654">[email&#160;protected]</span></a>
       </p>
     </div>
     <div class="contact-block">
@@ -458,20 +469,9 @@
 <footer>© 2026 Nur M. M. Kalimullah · Trinity College Dublin · Research Fellow, Civil, Structural &amp; Environmental Engineering</footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-/*
-  PODCAST AUDIO SOURCES — hosted on Google Drive
-  pub1 = Publication [12]: MrDMD paper
-  pub9 = Publication [4]:  MFPINN paper
-
-  To add a podcast for a future publication:
-  1. Upload the .m4a to Google Drive, set sharing to "Anyone with the link"
-  2. Get the file ID from the share URL: drive.google.com/file/d/FILE_ID/view
-  3. Add a new entry:  pubX: "https://drive.google.com/uc?export=download&id=FILE_ID"
-  4. Copy a podcast-player HTML block from pub1 or pub9, rename every "pub1"/"pub9" to "pubX"
-*/
 const podcastSrc = {
-  pub1: "https://res.cloudinary.com/dovrzy36j/video/upload/pub12_tqqpoq.m4a",
-  pub9: "https://res.cloudinary.com/dovrzy36j/video/upload/pub4_ayl2cz.m4a"
+  pub1: "https://res.cloudinary.com/dovrzy36j/video/upload/q_auto/f_auto/v1775079682/pub12_tqqpoq.mp4",
+  pub9: "https://res.cloudinary.com/dovrzy36j/video/upload/q_auto/f_auto/v1775079699/pub4_ayl2cz.mp4"
 };
 
 const players = {};
@@ -505,6 +505,11 @@ function togglePlay(id) {
   }
 }
 
+function skipTime(id, secs) {
+  const audio = getInstance(id);
+  if (audio) audio.currentTime = Math.max(0, Math.min(audio.duration || 0, audio.currentTime + secs));
+}
+
 function reset(id) {
   document.getElementById("playicon-" + id).innerHTML = '<polygon points="2,1 11,6 2,11"/>';
-  document.getElement
+  do
