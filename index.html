@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Nur M. M. Kalimullah — Research Fellow, Trinity College Dublin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
@@ -111,13 +111,82 @@
     /* FOOTER */
     footer { background: var(--navy); color: rgba(255,255,255,0.5); font-family: 'DM Mono', monospace; font-size: 12px; text-align: center; padding: 1.6rem 2.5rem; border-top: 2px solid var(--gold); }
 
+    /* ── iPad / tablet (768–1024px) ── */
+    @media (max-width: 1024px) {
+      section { padding: 3rem 2rem; }
+      .hero { grid-template-columns: 1fr 180px; gap: 1.5rem; }
+      .avatar { width: 170px; height: 170px; }
+      .avatar-initials { font-size: 54px; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { gap: 1.2rem; }
+      .nav-links a { font-size: 11.5px; }
+    }
+
+    /* ── Mobile (max 700px — iPhone SE to iPhone Pro Max) ── */
     @media (max-width: 700px) {
-      nav { padding: 0 1rem; } .nav-links { gap: 0.9rem; } .nav-links a { font-size: 11px; }
-      section { padding: 2rem 1.2rem; }
-      .hero { grid-template-columns: 1fr; }
-      .avatar { width: 100px; height: 100px; margin-top: 0; } .avatar-initials { font-size: 34px; }
-      .skills-grid, .contact-grid { grid-template-columns: 1fr; }
-      .cv-row { grid-template-columns: 110px 1fr; }
+      /* Nav — hide text links, show hamburger-style stacked or abbreviate */
+      nav { padding: 0 1rem; height: auto; min-height: 52px; flex-wrap: wrap; gap: 0; }
+      .nav-name { font-size: 15px; padding: 0.7rem 0; }
+      .nav-links { width: 100%; display: flex; flex-wrap: wrap; gap: 0; border-top: 0.5px solid rgba(255,255,255,0.15); padding: 0.4rem 0; }
+      .nav-links a { font-size: 10px; padding: 0.3rem 0.5rem; letter-spacing: 0.04em; }
+
+      /* Sections */
+      section { padding: 2rem 1.1rem; }
+
+      /* Hero — stack photo above name on very small screens */
+      .hero { grid-template-columns: 1fr; gap: 1.2rem; padding-top: 1rem; }
+      .hero-text h1 { font-size: 2.2rem; }
+      .subtitle-tag { font-size: 11px; }
+      .affil { font-size: 15px; }
+      .bio { font-size: 17px; }
+
+      /* Avatar — centred above text on mobile */
+      .avatar { width: 110px; height: 110px; margin: 0 auto; }
+      .avatar-initials { font-size: 38px; }
+
+      /* Pills */
+      .pill { font-size: 11.5px; padding: 5px 11px; }
+
+      /* Section headings */
+      h2 { font-size: 1.3rem; }
+
+      /* CV rows — tighter date column */
+      .cv-row { grid-template-columns: 95px 1fr; gap: 0.7rem; }
+      .cv-yr { font-size: 11.5px; }
+      .cv-role { font-size: 15px; }
+      .cv-where { font-size: 13px; }
+
+      /* Publications */
+      .pub-item { grid-template-columns: 32px 1fr; gap: 0.7rem; }
+      .pub-title { font-size: 15px; }
+      .pub-authors { font-size: 13px; }
+      .pub-venue { font-size: 11.5px; }
+
+      /* Podcast player */
+      .podcast-player { max-width: 100%; }
+      .podcast-time { font-size: 10px; min-width: 68px; }
+
+      /* Skills — single column */
+      .skills-grid { grid-template-columns: 1fr; }
+
+      /* Teaching */
+      .teaching-row { flex-direction: column; gap: 2px; align-items: flex-start; }
+      .teaching-row .t-meta { font-size: 11.5px; }
+
+      /* Contact — single column */
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-block p { font-size: 15px; }
+
+      /* Interest tags */
+      .interest-tag { font-size: 12px; padding: 5px 12px; }
+    }
+
+    /* ── Very small phones (iPhone SE = 375px) ── */
+    @media (max-width: 390px) {
+      .hero-text h1 { font-size: 1.9rem; }
+      .nav-links a { font-size: 9.5px; padding: 0.3rem 0.4rem; }
+      section { padding: 1.8rem 0.9rem; }
+      .cv-row { grid-template-columns: 82px 1fr; }
     }
   </style>
 </head>
