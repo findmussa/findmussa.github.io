@@ -14,31 +14,49 @@
       --bg: #fafaf8; --surface: #ffffff;
     }
     body { font-family: 'EB Garamond', Georgia, serif; background: var(--bg); color: var(--text); font-size: 20px; line-height: 1.75; }
-    nav { position: sticky; top: 0; z-index: 100; background: var(--navy); padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between; height: 60px; border-bottom: 3px solid var(--gold); }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 100; background: var(--navy); padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between; height: 58px; border-bottom: 3px solid var(--gold); }
     .nav-name { font-family: 'EB Garamond', serif; color: #fff; font-size: 17px; letter-spacing: 0.04em; }
-    .nav-links { display: flex; gap: 1.8rem; }
-    .nav-links a { color: rgba(255,255,255,0.8); font-family: 'DM Mono', monospace; font-size: 13px; text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links { display: flex; gap: 1.6rem; }
+    .nav-links a { color: rgba(255,255,255,0.8); font-family: 'DM Mono', monospace; font-size: 12px; text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover { color: var(--gold); }
-    section { padding: 4rem 2.5rem; max-width: 100%; }
+
+    /* SECTIONS */
+    section { padding: 3rem 2.5rem; max-width: 100%; }
     section + section { border-top: 0.5px solid var(--border); }
-    .hero { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: start; padding-top: 4.5rem; }
-    .hero-text h1 { font-size: 3rem; font-weight: 400; color: var(--navy); line-height: 1.18; margin-bottom: 0.3rem; }
-    .subtitle-tag { font-family: 'DM Mono', monospace; font-size: 13.5px; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.2rem; }
-    .affil { font-size: 17px; color: var(--muted); margin-bottom: 0.4rem; display: flex; align-items: center; gap: 8px; }
+
+    /* HERO — tight, no excessive top padding */
+    .hero { display: grid; grid-template-columns: 1fr 220px; gap: 2.5rem; align-items: start; padding-top: 1.5rem; }
+    .hero-text h1 { font-size: 3rem; font-weight: 400; color: var(--navy); line-height: 1.15; margin-bottom: 0.4rem; }
+    .subtitle-tag { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1rem; }
+    .affil { font-size: 17px; color: var(--muted); margin-bottom: 0.35rem; display: flex; align-items: center; gap: 8px; }
     .affil::before { content: ''; display: inline-block; width: 16px; height: 2px; background: var(--gold); flex-shrink: 0; }
-    .bio { font-size: 19px; color: #2c3a4a; max-width: 680px; line-height: 1.8; margin-top: 1.2rem; }
-    .avatar { width: 200px; height: 200px; border-radius: 50%; border: 3px solid var(--navy); flex-shrink: 0; background: #d6eaf6; overflow: hidden; display: flex; align-items: center; justify-content: center; margin-top: 1.5rem; }
+    .bio { font-size: 19px; color: #2c3a4a; line-height: 1.8; margin-top: 1rem; }
+    .avatar { width: 200px; height: 200px; border-radius: 50%; border: 3px solid var(--navy); background: #d6eaf6; overflow: hidden; display: flex; align-items: center; justify-content: center; margin-top: 2.5rem; }
     .avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
     .avatar-initials { font-family: 'EB Garamond', serif; font-size: 62px; color: var(--navy); }
-    .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.4rem; }
-    .pill { font-family: 'DM Mono', monospace; font-size: 13px; padding: 6px 15px; border-radius: 20px; border: 0.5px solid var(--border); color: var(--muted); background: var(--surface); text-decoration: none; transition: all 0.2s; }
+    .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.2rem; }
+    .pill { font-family: 'DM Mono', monospace; font-size: 13px; padding: 5px 14px; border-radius: 20px; border: 0.5px solid var(--border); color: var(--muted); background: var(--surface); text-decoration: none; transition: all 0.2s; }
     .pill:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
-    h2 { font-size: 1.6rem; font-weight: 400; color: var(--navy); margin-bottom: 1.8rem; padding-bottom: 0.5rem; border-bottom: 1.5px solid var(--gold); }
+
+    /* SECTION HEADINGS */
+    h2 { font-size: 1.6rem; font-weight: 400; color: var(--navy); margin-bottom: 1.6rem; padding-bottom: 0.5rem; border-bottom: 1.5px solid var(--gold); }
     .sec-num { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--gold); letter-spacing: 0.06em; margin-right: 6px; }
-    .interest-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 2.5rem; }
+
+    /* RESEARCH INTERESTS */
+    .interest-grid { display: flex; flex-wrap: wrap; gap: 10px; }
     .interest-tag { font-family: 'DM Mono', monospace; font-size: 13px; padding: 6px 16px; border-radius: 20px; background: #e8f1f8; color: var(--navy); border: 0.5px solid #b5cfe0; }
     .interest-tag.green { background: #e6f3ec; color: #1a5c35; border-color: #a8d5bc; }
-    h3.sub { font-family: 'DM Mono', monospace; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); margin: 2rem 0 1rem; }
+
+    /* CV ROWS (experience / education) */
+    .cv-row { display: grid; grid-template-columns: 160px 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 0.5px solid var(--border); }
+    .cv-yr { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--gold); padding-top: 2px; }
+    .cv-role { font-size: 17px; color: var(--text); margin-bottom: 2px; }
+    .cv-where { font-size: 15px; color: var(--muted); }
+
+    /* PUBLICATIONS */
+    h3.sub { font-family: 'DM Mono', monospace; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); margin: 1.8rem 0 0.9rem; }
     .pub-list { list-style: none; }
     .pub-item { padding: 1.1rem 0; border-bottom: 0.5px solid var(--border); display: grid; grid-template-columns: 44px 1fr; gap: 1rem; align-items: start; }
     .pub-num { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--gold); padding-top: 3px; }
@@ -51,7 +69,7 @@
     .doi-link { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent); text-decoration: none; border: 0.5px solid #b5cfe0; border-radius: 12px; padding: 3px 11px; transition: all 0.2s; white-space: nowrap; }
     .doi-link:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
 
-    /* ── Podcast mini-player ── */
+    /* PODCAST PLAYER */
     .podcast-player { background: #f0f5fb; border: 0.5px solid #b5cfe0; border-radius: 8px; padding: 7px 11px; margin-top: 10px; max-width: 460px; }
     .podcast-row { display: flex; align-items: center; gap: 9px; }
     .play-btn { width: 28px; height: 28px; border-radius: 50%; background: var(--navy); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.2s; }
@@ -66,31 +84,33 @@
     .volume-slider { width: 72px; height: 3px; -webkit-appearance: none; appearance: none; background: #c8d8e8; border-radius: 2px; outline: none; cursor: pointer; }
     .volume-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 11px; height: 11px; border-radius: 50%; background: var(--navy); cursor: pointer; }
 
-    .cv-row { display: grid; grid-template-columns: 155px 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 0.5px solid var(--border); }
-    .cv-yr { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--gold); padding-top: 2px; }
-    .cv-role { font-size: 17px; color: var(--text); margin-bottom: 2px; }
-    .cv-where { font-size: 15px; color: var(--muted); }
+    /* CV SECTION — skills, memberships */
     .skills-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
     .skill-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; }
     .skill-card .skill-label { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--gold); letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 6px; }
     .skill-card p { font-size: 15px; color: var(--text); line-height: 1.6; }
+
+    /* TEACHING */
     .teaching-row { display: flex; justify-content: space-between; align-items: baseline; padding: 0.9rem 0; border-bottom: 0.5px solid var(--border); gap: 1rem; }
     .teaching-row .t-name { font-size: 17px; color: var(--text); }
     .teaching-row .t-meta { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--muted); white-space: nowrap; }
+
+    /* CONTACT */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
     .contact-block h3 { font-family: 'DM Mono', monospace; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); margin-bottom: 0.5rem; }
-    .contact-block p { font-size: 16px; color: var(--text); line-height: 1.8; }
+    .contact-block p { font-size: 16px; color: var(--text); line-height: 1.9; }
     .contact-block a { color: var(--accent); text-decoration: none; }
+    .contact-block a:hover { text-decoration: underline; }
     .placeholder-text { font-style: italic; color: var(--muted); font-size: 15px; }
-    footer { background: var(--navy); color: rgba(255,255,255,0.55); font-family: 'DM Mono', monospace; font-size: 12.5px; text-align: center; padding: 2rem 2.5rem; border-top: 2px solid var(--gold); line-height: 2; }
-    footer a { color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s; }
-    footer a:hover { color: var(--gold); }
-    .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin-top: 0.6rem; }
-    @media (max-width: 620px) {
-      nav { padding: 0 1rem; } .nav-links { gap: 1rem; }
-      section { padding: 2.5rem 1rem; }
-      .hero { grid-template-columns: 1fr; } .avatar { width: 90px; height: 90px; }
-      .avatar-initials { font-size: 30px; }
+
+    /* FOOTER */
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); font-family: 'DM Mono', monospace; font-size: 12px; text-align: center; padding: 1.6rem 2.5rem; border-top: 2px solid var(--gold); }
+
+    @media (max-width: 700px) {
+      nav { padding: 0 1rem; } .nav-links { gap: 0.9rem; } .nav-links a { font-size: 11px; }
+      section { padding: 2rem 1.2rem; }
+      .hero { grid-template-columns: 1fr; }
+      .avatar { width: 100px; height: 100px; margin-top: 0; } .avatar-initials { font-size: 34px; }
       .skills-grid, .contact-grid { grid-template-columns: 1fr; }
       .cv-row { grid-template-columns: 110px 1fr; }
     }
@@ -99,21 +119,25 @@
 <body>
 
 <nav>
-  <span class="nav-name">Nur M. M. Kalimullah</span>
+  <span class="nav-name">Dr. Kalimullah</span>
   <div class="nav-links">
     <a href="#about">About</a>
-    <a href="#research">Research</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#interests">Interests</a>
+    <a href="#publications">Publications</a>
     <a href="#cv">CV</a>
     <a href="#teaching">Teaching</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
 
+<!-- ══ ABOUT ══ -->
 <section id="about">
   <div class="hero">
     <div class="hero-text">
       <p class="subtitle-tag">Research Fellow (Post-Doc)</p>
-      <h1>Nur M. M. Kalimullah</h1>
+      <h1>Nur M. M. Kalimullah (PhD, A.M.ASCE)</h1>
       <p class="affil">Dept. of Civil, Structural &amp; Environmental Engineering</p>
       <p class="affil">Trinity College Dublin, Ireland</p>
       <p class="bio">I am a Research Fellow at Trinity College Dublin working at the intersection of structural dynamics, physics-informed machine learning, and renewable energy systems. My research spans structural health monitoring, digital twin development for wind turbines, probabilistic ML for composite materials, and wave-based non-destructive evaluation.</p>
@@ -125,19 +149,46 @@
     </div>
     <!--
       HOW TO ADD YOUR PHOTO
-      1. Rename your photo to "photo.jpg" (or .png) and place it in the same folder as index.html
-      2. Delete the line: <span class="avatar-initials">NK</span>
+      1. Place your photo (e.g. photo.jpg) in the same folder as index.html
+      2. Delete the <span class="avatar-initials">NK</span> line
       3. Uncomment the <img> line below
     -->
     <div class="avatar">
-      <!--<span class="avatar-initials">NK</span> -->
+      <!-- <span class="avatar-initials">NK</span> -->
       <img src="image.jpg" alt="Nur M. M. Kalimullah" />
     </div>
   </div>
 </section>
 
-<section id="research">
-  <h2><span class="sec-num">01 —</span> Research Interests</h2>
+<!-- ══ 01 EXPERIENCE ══ -->
+<section id="experience">
+  <h2><span class="sec-num">01 —</span> Experience</h2>
+  <div class="cv-row">
+    <span class="cv-yr">Jan 2025 – Present</span>
+    <div><p class="cv-role">Research Fellow (Post-Doc)</p><p class="cv-where">Dept. of Civil, Structural &amp; Environmental Engineering, Trinity College Dublin, Ireland</p></div>
+  </div>
+  <div class="cv-row">
+    <span class="cv-yr">Aug – Dec 2024</span>
+    <div><p class="cv-role">Guest Faculty</p><p class="cv-where">Dept. of Civil Engineering, NERIST, Arunachal Pradesh, India</p></div>
+  </div>
+</section>
+
+<!-- ══ 02 EDUCATION ══ -->
+<section id="education">
+  <h2><span class="sec-num">02 —</span> Education</h2>
+  <div class="cv-row">
+    <span class="cv-yr">Nov 2024</span>
+    <div><p class="cv-role">PhD, Structural Engineering</p><p class="cv-where">Indian Institute of Technology Guwahati (IITG), India</p></div>
+  </div>
+  <div class="cv-row">
+    <span class="cv-yr">May 2018</span>
+    <div><p class="cv-role">B.Tech., Civil Engineering</p><p class="cv-where">NERIST, Arunachal Pradesh, India</p></div>
+  </div>
+</section>
+
+<!-- ══ 03 RESEARCH INTERESTS ══ -->
+<section id="interests">
+  <h2><span class="sec-num">03 —</span> Research Interests</h2>
   <div class="interest-grid">
     <span class="interest-tag green">Renewable Energy Systems</span>
     <span class="interest-tag green">Wind Turbine Dynamics</span>
@@ -150,50 +201,26 @@
     <span class="interest-tag">Composite Materials</span>
     <span class="interest-tag">Physics-Informed Neural Networks</span>
   </div>
+</section>
 
-  <h3 class="sub" style="margin-top:0">Experience</h3>
-  <div class="cv-row">
-    <span class="cv-yr">Jan 2025 – Present</span>
-    <div><p class="cv-role">Research Fellow (Post-Doc)</p><p class="cv-where">Dept. of Civil, Structural &amp; Environmental Engineering, Trinity College Dublin, Ireland</p></div>
-  </div>
-  <div class="cv-row">
-    <span class="cv-yr">Aug – Dec 2024</span>
-    <div><p class="cv-role">Guest Faculty</p><p class="cv-where">Dept. of Civil Engineering, NERIST, Arunachal Pradesh, India</p></div>
-  </div>
+<!-- ══ 04 PUBLICATIONS ══ -->
+<section id="publications">
+  <h2><span class="sec-num">04 —</span> Publications</h2>
 
-  <h3 class="sub">Education</h3>
-  <div class="cv-row">
-    <span class="cv-yr">Nov 2024</span>
-    <div><p class="cv-role">PhD, Structural Engineering</p><p class="cv-where">Indian Institute of Technology Guwahati (IITG), India</p></div>
-  </div>
-  <div class="cv-row">
-    <span class="cv-yr">May 2018</span>
-    <div><p class="cv-role">B.Tech., Civil Engineering</p><p class="cv-where">NERIST, Arunachal Pradesh, India</p></div>
-  </div>
-
-  <h2 style="margin-top:2.5rem"><span class="sec-num">02 —</span> Publications</h2>
-  <h3 class="sub">Journal Articles</h3>
+  <h3 class="sub" style="margin-top:0">Journal Articles</h3>
   <ul class="pub-list">
 
-    <!-- ══ [1] — HAS PODCAST ══
-         Place your audio file at: podcasts/pub1.m4a
-         To add a podcast to a future publication, copy this player block,
-         change "pub1" in all id/onclick attributes to a new unique id (e.g. "pub3"),
-         and update the src in the podcasts config in the <script> below. -->
+    <!-- [1] HAS PODCAST — file: podcasts/pub1.m4a -->
     <li class="pub-item">
       <span class="pub-num">[1]</span>
       <div>
         <p class="pub-authors">Nur M.M. Kalimullah, B. Fitzgerald, A. Habib</p>
         <p class="pub-title"><a href="https://doi.org/10.1016/j.ymssp.2026.114190" target="_blank" rel="noopener">Deep reconstruction of sparse elastic wavefield and graph-based damage detection for accelerated health monitoring of PZT ceramics</a></p>
         <p class="pub-venue">Mechanical Systems and Signal Processing, 250, 114190 · 2026</p>
-        <div class="pub-meta">
-          <a class="doi-link" href="https://doi.org/10.1016/j.ymssp.2026.114190" target="_blank" rel="noopener">DOI ↗</a>
-        </div>
+        <div class="pub-meta"><a class="doi-link" href="https://doi.org/10.1016/j.ymssp.2026.114190" target="_blank" rel="noopener">DOI ↗</a></div>
         <div class="podcast-player">
           <div class="podcast-row">
-            <button class="play-btn" id="playbtn-pub1" onclick="togglePlay('pub1')">
-              <svg id="playicon-pub1" viewBox="0 0 12 12"><polygon points="2,1 11,6 2,11"/></svg>
-            </button>
+            <button class="play-btn" id="playbtn-pub1" onclick="togglePlay('pub1')"><svg id="playicon-pub1" viewBox="0 0 12 12"><polygon points="2,1 11,6 2,11"/></svg></button>
             <span class="pod-label">Podcast</span>
             <input type="range" class="podcast-progress" id="prog-pub1" value="0" min="0" max="100" step="1" oninput="seek('pub1',this.value)">
             <span class="podcast-time" id="time-pub1">0:00 / 0:00</span>
@@ -276,22 +303,17 @@
       </div>
     </li>
 
-    <!-- ══ [9] — HAS PODCAST ══
-         Place your audio file at: podcasts/pub9.m4a -->
+    <!-- [9] HAS PODCAST — file: podcasts/pub9.m4a -->
     <li class="pub-item">
       <span class="pub-num">[9]</span>
       <div>
         <p class="pub-authors">N.M.M. Kalimullah, A. Shelke, A. Habib</p>
         <p class="pub-title"><a href="https://doi.org/10.1016/j.ymssp.2023.110360" target="_blank" rel="noopener">A probabilistic framework for source localization in anisotropic composite using transfer learning based multi-fidelity physics-informed neural network (MFPINN)</a></p>
         <p class="pub-venue">Mechanical Systems and Signal Processing, 197, 110360 · 2023</p>
-        <div class="pub-meta">
-          <a class="doi-link" href="https://doi.org/10.1016/j.ymssp.2023.110360" target="_blank" rel="noopener">DOI ↗</a>
-        </div>
+        <div class="pub-meta"><a class="doi-link" href="https://doi.org/10.1016/j.ymssp.2023.110360" target="_blank" rel="noopener">DOI ↗</a></div>
         <div class="podcast-player">
           <div class="podcast-row">
-            <button class="play-btn" id="playbtn-pub9" onclick="togglePlay('pub9')">
-              <svg id="playicon-pub9" viewBox="0 0 12 12"><polygon points="2,1 11,6 2,11"/></svg>
-            </button>
+            <button class="play-btn" id="playbtn-pub9" onclick="togglePlay('pub9')"><svg id="playicon-pub9" viewBox="0 0 12 12"><polygon points="2,1 11,6 2,11"/></svg></button>
             <span class="pod-label">Podcast</span>
             <input type="range" class="podcast-progress" id="prog-pub9" value="0" min="0" max="100" step="1" oninput="seek('pub9',this.value)">
             <span class="podcast-time" id="time-pub9">0:00 / 0:00</span>
@@ -367,10 +389,11 @@
   </ul>
 </section>
 
+<!-- ══ 05 CV ══ -->
 <section id="cv">
-  <h2><span class="sec-num">03 —</span> CV</h2>
+  <h2><span class="sec-num">05 —</span> CV</h2>
   <h3 class="sub" style="margin-top:0">Skills</h3>
-  <div class="skills-grid" style="margin-top:0.5rem">
+  <div class="skills-grid">
     <div class="skill-card"><p class="skill-label">CAD / CAE</p><p>AutoCAD · SAP2000 · STAAD.Pro</p></div>
     <div class="skill-card"><p class="skill-label">Programming</p><p>MATLAB · Python</p></div>
     <div class="skill-card"><p class="skill-label">ML Stack</p><p>PyTorch · TensorFlow · scikit-learn · pandas · NumPy</p></div>
@@ -380,7 +403,7 @@
   <div class="cv-row"><span class="cv-yr">ACI</span><div><p class="cv-where">Student Member, American Concrete Institute</p></div></div>
   <div class="cv-row"><span class="cv-yr">IEEE</span><div><p class="cv-where">Student Member, Institute of Electrical and Electronics Engineers</p></div></div>
   <h3 class="sub">Journal Reviewer</h3>
-  <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:0.3rem">
+  <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:0.3rem">
     <span class="interest-tag">Mech. Systems &amp; Signal Processing</span>
     <span class="interest-tag">Smart Materials &amp; Structures</span>
     <span class="interest-tag">ML Science &amp; Technology</span>
@@ -390,20 +413,25 @@
   </div>
 </section>
 
+<!-- ══ 06 TEACHING ══ -->
 <section id="teaching">
-  <h2><span class="sec-num">04 —</span> Teaching &amp; Responsibilities</h2>
+  <h2><span class="sec-num">06 —</span> Teaching &amp; Responsibilities</h2>
   <div class="teaching-row"><span class="t-name">Guest Faculty — Civil Engineering</span><span class="t-meta">NERIST · Aug–Dec 2024</span></div>
   <div class="teaching-row"><span class="t-name">General Secretary, CEAN</span><span class="t-meta">Civil Engineering Association, NERIST</span></div>
   <div class="teaching-row"><span class="t-name">Organising Member — TEDx NERIST</span><span class="t-meta">NERIST</span></div>
   <div class="teaching-row"><span class="t-name">Organising Secretary — SHRISTI'18</span><span class="t-meta">Annual techno-management festival · 2018</span></div>
 </section>
 
+<!-- ══ 07 CONTACT ══ -->
 <section id="contact">
-  <h2><span class="sec-num">05 —</span> Contact</h2>
+  <h2><span class="sec-num">07 —</span> Contact</h2>
   <div class="contact-grid">
     <div class="contact-block">
       <h3>Email</h3>
-      <p><a href="mailto:nur.mk@tcd.ie">nur.mk@tcd.ie</a><br><a href="mailto:findmussa@gmail.com">findmussa@gmail.com</a></p>
+      <p>
+        <a href="mailto:nur.mk@tcd.ie">nur.mk@tcd.ie</a><br>
+        <a href="mailto:findmussa@gmail.com">findmussa@gmail.com</a>
+      </p>
     </div>
     <div class="contact-block">
       <h3>Phone</h3>
@@ -427,25 +455,14 @@
   </div>
 </section>
 
-<footer>
-  <div>© 2026 Nur M. M. Kalimullah · Trinity College Dublin · Research Fellow, Civil, Structural &amp; Environmental Engineering</div>
-</footer>
+<footer>© 2026 Nur M. M. Kalimullah · Trinity College Dublin · Research Fellow, Civil, Structural &amp; Environmental Engineering</footer>
 
 <script>
 /*
-  ════════════════════════════════════════════════════
   PODCAST AUDIO SOURCES
-  ════════════════════════════════════════════════════
-  1. Create a folder called "podcasts/" next to index.html
-  2. Place your .m4a files there with these exact names:
-       podcasts/pub1.m4a   → for publication [1]
-       podcasts/pub9.m4a   → for publication [9]
-
-  TO ADD A PODCAST TO A FUTURE PUBLICATION:
-  a) Copy a podcast-player <div> block from [1] or [9] in the HTML
-  b) Replace every "pub1" / "pub9" in that block with a new key, e.g. "pub3"
-  c) Add a matching entry below:  pub3: "podcasts/pub3.m4a"
-  ════════════════════════════════════════════════════
+  Place your .m4a files here:  podcasts/pub1.m4a  and  podcasts/pub9.m4a
+  To add more: add an entry below and copy a player block from pub1 or pub9 in the HTML,
+  renaming every "pub1"/"pub9" to your new key (e.g. "pub3").
 */
 const podcastSrc = {
   pub1: "podcasts/pub1.m4a",
@@ -485,4 +502,22 @@ function togglePlay(id) {
 
 function reset(id) {
   document.getElementById("playicon-" + id).innerHTML = '<polygon points="2,1 11,6 2,11"/>';
-  document.getElement
+  document.getElementById("prog-" + id).value = 0;
+  document.getElementById("time-" + id).textContent = "0:00 / 0:00";
+}
+
+function seek(id, val) {
+  const audio = players[id];
+  if (audio && audio.duration) audio.currentTime = (val / 100) * audio.duration;
+}
+
+function setVol(id, val) { getInstance(id).volume = val / 100; }
+
+function fmt(s) {
+  if (isNaN(s)) return "0:00";
+  const m = Math.floor(s / 60), sec = Math.floor(s % 60);
+  return m + ":" + (sec < 10 ? "0" : "") + sec;
+}
+</script>
+</body>
+</html>
