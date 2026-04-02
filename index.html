@@ -80,6 +80,8 @@
     .skip-btn:hover { background: var(--navy); border-color: var(--navy); }
     .skip-btn:hover svg { fill: #fff; stroke: #fff; }
     .skip-btn svg { width: 14px; height: 14px; fill: var(--navy); stroke: var(--navy); }
+    .speed-btn { font-family: 'DM Mono', monospace; font-size: 10.5px; color: var(--navy); background: transparent; border: 0.5px solid #b5cfe0; border-radius: 10px; padding: 3px 7px; cursor: pointer; white-space: nowrap; transition: all 0.2s; flex-shrink: 0; }
+    .speed-btn:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
     .pod-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
     .podcast-progress { flex: 1; height: 4px; -webkit-appearance: none; appearance: none; background: #c8d8e8; border-radius: 2px; outline: none; cursor: pointer; min-width: 0; }
     .podcast-progress::-webkit-slider-thumb { -webkit-appearance: none; width: 12px; height: 12px; border-radius: 50%; background: var(--navy); cursor: pointer; }
@@ -88,6 +90,33 @@
     .vol-icon { width: 13px; height: 13px; flex-shrink: 0; }
     .volume-slider { width: 72px; height: 3px; -webkit-appearance: none; appearance: none; background: #c8d8e8; border-radius: 2px; outline: none; cursor: pointer; }
     .volume-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 11px; height: 11px; border-radius: 50%; background: var(--navy); cursor: pointer; }
+
+    /* FLOATING MINI PLAYER */
+    #floating-player {
+      position: fixed; bottom: 1.2rem; left: 50%; transform: translateX(-50%);
+      background: var(--navy); border-radius: 40px;
+      padding: 7px 14px; display: flex; align-items: center; gap: 8px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.22);
+      z-index: 999; opacity: 0; pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      max-width: 420px; width: 90vw;
+    }
+    #floating-player.visible { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
+    .fp-title-wrap { overflow: hidden; flex: 1; min-width: 0; position: relative; }
+    .fp-title-wrap::before, .fp-title-wrap::after { content: ''; position: absolute; top: 0; bottom: 0; width: 18px; z-index: 1; pointer-events: none; }
+    .fp-title-wrap::before { left: 0; background: linear-gradient(to right, #003366, transparent); }
+    .fp-title-wrap::after { right: 0; background: linear-gradient(to left, #003366, transparent); }
+    .fp-title { font-family: 'DM Mono', monospace; font-size: 11px; color: rgba(255,255,255,0.85); white-space: nowrap; display: inline-block; }
+    .fp-play-btn { width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.15); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.2s; }
+    .fp-play-btn:hover { background: rgba(255,255,255,0.3); }
+    .fp-play-btn svg { width: 11px; height: 11px; fill: #fff; }
+    .fp-progress { flex: 1; height: 3px; -webkit-appearance: none; appearance: none; background: rgba(255,255,255,0.25); border-radius: 2px; outline: none; cursor: pointer; min-width: 50px; }
+    .fp-progress::-webkit-slider-thumb { -webkit-appearance: none; width: 10px; height: 10px; border-radius: 50%; background: var(--gold); cursor: pointer; }
+    .fp-time { font-family: 'DM Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.6); white-space: nowrap; }
+    .fp-speed { font-family: 'DM Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.12); border: none; border-radius: 8px; padding: 2px 6px; cursor: pointer; white-space: nowrap; }
+    .fp-speed:hover { background: rgba(255,255,255,0.25); color: #fff; }
+    .fp-close { width: 18px; height: 18px; border-radius: 50%; background: rgba(255,255,255,0.1); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: rgba(255,255,255,0.6); font-size: 11px; line-height: 1; transition: background 0.2s; padding: 0; }
+    .fp-close:hover { background: rgba(255,255,255,0.25); color: #fff; }
 
     /* CV SECTION — skills, memberships */
     .skills-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
@@ -252,7 +281,7 @@
   <h2><span class="sec-num">02 —</span> Education</h2>
   <div class="cv-row">
     <span class="cv-yr">Nov 2024</span>
-    <div><p class="cv-role">PhD, Structural Engineering</p><p class="cv-where">Indian Institute of Technology Guwahati (IITG), Assam, India</p></div>
+    <div><p class="cv-role">PhD, Structural Engineering</p><p class="cv-where">Indian Institute of Technology Guwahati (IIT-G), Assam, India</p></div>
   </div>
   <div class="cv-row">
     <span class="cv-yr">May 2018</span>
@@ -284,7 +313,7 @@
   <h3 class="sub" style="margin-top:0">Journal Articles</h3>
   <ul class="pub-list">
 
-    <!-- [1] HAS PODCAST — Publication [12] (MrDMD) — hosted on Google Drive -->
+    <!-- [1] HAS PODCAST — Publication [12] (QRSDN) — hosted on Google Drive -->
     <li class="pub-item">
       <span class="pub-num">[1]</span>
       <div>
@@ -292,7 +321,7 @@
         <p class="pub-title"><a href="https://doi.org/10.1016/j.ymssp.2026.114190" target="_blank" rel="noopener">Deep reconstruction of sparse elastic wavefield and graph-based damage detection for accelerated health monitoring of PZT ceramics</a></p>
         <p class="pub-venue">Mechanical Systems and Signal Processing, 250, 114190 · 2026</p>
         <div class="pub-meta"><a class="doi-link" href="https://doi.org/10.1016/j.ymssp.2026.114190" target="_blank" rel="noopener">DOI ↗</a></div>
-        <div class="podcast-player">
+        <div class="podcast-player" id="player-pub1">
           <div style="font-family:'DM Mono',monospace; font-size:10.5px; color:var(--gold); text-transform:uppercase; letter-spacing:0.07em; margin-bottom:6px;">🎙 Research Podcast</div>
           <div class="podcast-row">
             <button class="play-btn" id="playbtn-pub1" onclick="togglePlay('pub1')"><svg id="playicon-pub1" viewBox="0 0 12 12"><polygon points="2,1 11,6 2,11"/></svg></button>
@@ -300,6 +329,7 @@
             <button class="skip-btn" onclick="skipTime('pub1',10)" title="+10s"><svg viewBox="0 0 16 16" fill="none" stroke-width="1.2"><path d="M8 3.5A4.5 4.5 0 1 1 3.5 8" stroke-linecap="round"/><path d="M8 1.5L10.5 3.5 8 5.5" stroke-linecap="round" stroke-linejoin="round"/><text x="4.5" y="10.5" font-size="4.5" fill="currentColor" stroke="none" font-family="monospace">10</text></svg></button>
             <input type="range" class="podcast-progress" id="prog-pub1" value="0" min="0" max="100" step="1" oninput="seek('pub1',this.value)">
             <span class="podcast-time" id="time-pub1">0:00 / 0:00</span>
+            <button class="speed-btn" id="speed-pub1" onclick="cycleSpeed('pub1')">1×</button>
           </div>
           <div class="volume-row">
             <svg class="vol-icon" viewBox="0 0 13 13" fill="none"><path d="M2 4.5H4.5L7.5 2v9L4.5 8.5H2V4.5Z" fill="#5a6577"/><path d="M9 4.5c.8.6 1.3 1.5 1.3 2.5s-.5 1.9-1.3 2.5" stroke="#5a6577" stroke-width="1" stroke-linecap="round"/></svg>
@@ -388,7 +418,7 @@
         <p class="pub-title"><a href="https://doi.org/10.1016/j.ymssp.2023.110360" target="_blank" rel="noopener">A probabilistic framework for source localization in anisotropic composite using transfer learning based multi-fidelity physics-informed neural network (mfPINN)</a></p>
         <p class="pub-venue">Mechanical Systems and Signal Processing, 197, 110360 · 2023</p>
         <div class="pub-meta"><a class="doi-link" href="https://doi.org/10.1016/j.ymssp.2023.110360" target="_blank" rel="noopener">DOI ↗</a></div>
-        <div class="podcast-player">
+        <div class="podcast-player" id="player-pub9">
           <div style="font-family:'DM Mono',monospace; font-size:10.5px; color:var(--gold); text-transform:uppercase; letter-spacing:0.07em; margin-bottom:6px;">🎙 Research Podcast</div>
           <div class="podcast-row">
             <button class="play-btn" id="playbtn-pub9" onclick="togglePlay('pub9')"><svg id="playicon-pub9" viewBox="0 0 12 12"><polygon points="2,1 11,6 2,11"/></svg></button>
@@ -396,6 +426,7 @@
             <button class="skip-btn" onclick="skipTime('pub9',10)" title="+10s"><svg viewBox="0 0 16 16" fill="none" stroke-width="1.2"><path d="M8 3.5A4.5 4.5 0 1 1 3.5 8" stroke-linecap="round"/><path d="M8 1.5L10.5 3.5 8 5.5" stroke-linecap="round" stroke-linejoin="round"/><text x="4.5" y="10.5" font-size="4.5" fill="currentColor" stroke="none" font-family="monospace">10</text></svg></button>
             <input type="range" class="podcast-progress" id="prog-pub9" value="0" min="0" max="100" step="1" oninput="seek('pub9',this.value)">
             <span class="podcast-time" id="time-pub9">0:00 / 0:00</span>
+            <button class="speed-btn" id="speed-pub9" onclick="cycleSpeed('pub9')">1×</button>
           </div>
           <div class="volume-row">
             <svg class="vol-icon" viewBox="0 0 13 13" fill="none"><path d="M2 4.5H4.5L7.5 2v9L4.5 8.5H2V4.5Z" fill="#5a6577"/><path d="M9 4.5c.8.6 1.3 1.5 1.3 2.5s-.5 1.9-1.3 2.5" stroke="#5a6577" stroke-width="1" stroke-linecap="round"/></svg>
@@ -537,24 +568,55 @@
 
 <footer>© 2026 Nur M. M. Kalimullah · Trinity College Dublin · Research Fellow, Civil, Structural &amp; Environmental Engineering</footer>
 
+<!-- FLOATING MINI PLAYER -->
+<div id="floating-player">
+  <button class="fp-play-btn" id="fp-play" onclick="fpTogglePlay()">
+    <svg id="fp-icon" viewBox="0 0 12 12"><polygon points="2,1 11,6 2,11"/></svg>
+  </button>
+  <div class="fp-title-wrap" id="fp-title-wrap">
+    <span class="fp-title" id="fp-title">Research Podcast</span>
+  </div>
+  <input type="range" class="fp-progress" id="fp-progress" value="0" min="0" max="100" step="1" oninput="fpSeek(this.value)">
+  <span class="fp-time" id="fp-time">0:00</span>
+  <button class="fp-speed" id="fp-speed" onclick="fpCycleSpeed()">1×</button>
+  <button class="fp-close" onclick="closeFP()" title="Close">✕</button>
+</div>
+
 <script>
 const podcastSrc = {
   pub1: "https://res.cloudinary.com/dovrzy36j/video/upload/q_auto/f_auto/v1775079682/pub12_tqqpoq.mp4",
   pub9: "https://res.cloudinary.com/dovrzy36j/video/upload/q_auto/f_auto/v1775079699/pub4_ayl2cz.mp4"
 };
 
+const pubTitles = {
+  pub1: "QRSDN - Deep reconstruction of sparse elastic wavefield",
+  pub9: "MFPINN - Probabilistic source localisation"
+};
+
+const SPEEDS = [1, 1.25, 1.5, 1.75, 2];
 const players = {};
+const speedIndex = {};
+let activeId = null;
 
 function getInstance(id) {
   if (!players[id]) {
     const audio = new Audio(podcastSrc[id]);
     audio.volume = 0.8;
+    speedIndex[id] = 0;
     audio.addEventListener("timeupdate", () => {
       if (!audio.duration) return;
-      document.getElementById("prog-" + id).value = Math.round((audio.currentTime / audio.duration) * 100);
+      const pct = Math.round((audio.currentTime / audio.duration) * 100);
+      document.getElementById("prog-" + id).value = pct;
       document.getElementById("time-" + id).textContent = fmt(audio.currentTime) + " / " + fmt(audio.duration);
+      if (activeId === id) {
+        document.getElementById("fp-progress").value = pct;
+        document.getElementById("fp-time").textContent = fmt(audio.currentTime);
+      }
     });
-    audio.addEventListener("ended", () => reset(id));
+    audio.addEventListener("ended", () => {
+      reset(id);
+      hideFP();
+    });
     players[id] = audio;
   }
   return players[id];
@@ -564,25 +626,79 @@ function togglePlay(id) {
   const audio = getInstance(id);
   if (audio.paused) {
     Object.keys(players).forEach(k => {
-      if (k !== id && !players[k].paused) { players[k].pause(); reset(k); }
+      if (k !== id && !players[k].paused) { players[k].pause(); resetIcon(k); }
     });
     audio.play();
-    document.getElementById("playicon-" + id).innerHTML = '<rect x="2" y="1" width="3" height="10"/><rect x="7" y="1" width="3" height="10"/>';
+    activeId = id;
+    setPlayIcon(id, false);
+    const _t = pubTitles[id] || "Research Podcast";
+    const fpEl = document.getElementById("fp-title");
+    const wrapEl = document.getElementById("fp-title-wrap");
+    fpEl.style.animation = "none";
+    fpEl.style.transform = "translateX(0)";
+
+    const GAP = 80;
+    const pausePx = 24;
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        fpEl.textContent = _t;
+        const singleW = fpEl.scrollWidth;
+        const unit = singleW + GAP;
+        fpEl.textContent = _t + "\u00a0".repeat(Math.ceil(GAP / 7)) + _t + "\u00a0".repeat(Math.ceil(GAP / 7));
+
+        let styleEl = document.getElementById("fp-keyframe-style");
+        if (!styleEl) {
+          styleEl = document.createElement("style");
+          styleEl.id = "fp-keyframe-style";
+          document.head.appendChild(styleEl);
+        }
+
+        const totalDur = 18;
+        const pauseFrac = 0.10;
+        styleEl.textContent = `
+          @keyframes fp-scroll {
+            0%                         { transform: translateX(0px); }
+            ${pauseFrac * 100}%        { transform: translateX(0px); }
+            ${(1 - pauseFrac) * 100}%  { transform: translateX(-${unit}px); }
+            100%                       { transform: translateX(-${unit}px); }
+          }
+        `;
+
+        fpEl.style.animation = "";
+        fpEl.style.animation = `fp-scroll ${totalDur}s linear infinite`;
+      });
+    });
+    document.getElementById("fp-speed").textContent = SPEEDS[speedIndex[id]] + "×";
+    syncFP();
   } else {
     audio.pause();
-    document.getElementById("playicon-" + id).innerHTML = '<polygon points="2,1 11,6 2,11"/>';
+    setPlayIcon(id, true);
+    syncFP();
+    startPauseTimer();
   }
+}
+
+function setPlayIcon(id, paused) {
+  document.getElementById("playicon-" + id).innerHTML = paused
+    ? '<polygon points="2,1 11,6 2,11"/>'
+    : '<rect x="2" y="1" width="3" height="10"/><rect x="7" y="1" width="3" height="10"/>';
+}
+
+function resetIcon(id) {
+  setPlayIcon(id, true);
+  document.getElementById("prog-" + id).value = 0;
+  document.getElementById("time-" + id).textContent = "0:00 / 0:00";
+}
+
+function reset(id) {
+  resetIcon(id);
+  activeId = null;
 }
 
 function skipTime(id, secs) {
   const audio = getInstance(id);
   if (audio) audio.currentTime = Math.max(0, Math.min(audio.duration || 0, audio.currentTime + secs));
-}
-
-function reset(id) {
-  document.getElementById("playicon-" + id).innerHTML = '<polygon points="2,1 11,6 2,11"/>';
-  document.getElementById("prog-" + id).value = 0;
-  document.getElementById("time-" + id).textContent = "0:00 / 0:00";
 }
 
 function seek(id, val) {
@@ -592,12 +708,105 @@ function seek(id, val) {
 
 function setVol(id, val) { getInstance(id).volume = val / 100; }
 
+function cycleSpeed(id) {
+  const audio = getInstance(id);
+  speedIndex[id] = (speedIndex[id] + 1) % SPEEDS.length;
+  const s = SPEEDS[speedIndex[id]];
+  audio.playbackRate = s;
+  document.getElementById("speed-" + id).textContent = s + "×";
+  if (activeId === id) document.getElementById("fp-speed").textContent = s + "×";
+}
+
 function fmt(s) {
   if (isNaN(s)) return "0:00";
   const m = Math.floor(s / 60), sec = Math.floor(s % 60);
   return m + ":" + (sec < 10 ? "0" : "") + sec;
 }
+
+/* ── FLOATING PLAYER ── */
+const fp = document.getElementById("floating-player");
+
+function syncFP() {
+  if (!activeId) return;
+  const audio = players[activeId];
+  document.getElementById("fp-icon").innerHTML = audio && !audio.paused
+    ? '<rect x="2" y="1" width="3" height="10"/><rect x="7" y="1" width="3" height="10"/>'
+    : '<polygon points="2,1 11,6 2,11"/>';
+}
+
+function hideFP() { fp.classList.remove("visible"); }
+
+function closeFP() {
+  clearTimeout(pauseTimer);
+  if (activeId && players[activeId] && !players[activeId].paused) {
+    players[activeId].pause();
+    setPlayIcon(activeId, true);
+    syncFP();
+  }
+  hideFP();
+}
+
+let pauseTimer = null;
+
+function startPauseTimer() {
+  clearTimeout(pauseTimer);
+  pauseTimer = setTimeout(() => {
+    if (activeId && players[activeId] && players[activeId].paused) {
+      hideFP();
+    }
+  }, 20000);
+}
+
+function fpTogglePlay() {
+  if (!activeId) return;
+  clearTimeout(pauseTimer);
+  togglePlay(activeId);
+  syncFP();
+}
+
+function fpSeek(val) {
+  if (!activeId) return;
+  seek(activeId, val);
+}
+
+function fpCycleSpeed() {
+  if (!activeId) return;
+  cycleSpeed(activeId);
+}
+
+/* IntersectionObserver — show float when active player scrolls out of view */
+const observers = {};
+
+function observePlayer(id) {
+  const el = document.getElementById("player-" + id);
+  if (!el || observers[id]) return;
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (activeId !== id) return;
+      const audio = players[id];
+      if (!audio || audio.paused) { hideFP(); return; }
+      if (e.isIntersecting) {
+        hideFP();
+      } else {
+        fp.classList.add("visible");
+        syncFP();
+      }
+    });
+  }, { threshold: 0.1 });
+  obs.observe(el);
+  observers[id] = obs;
+}
+
+/* Start observing both players on load */
+window.addEventListener("load", () => {
+  observePlayer("pub1");
+  observePlayer("pub9");
+});
+
+/* Also re-check when play starts in case observer already ran */
+const _origToggle = togglePlay;
 </script>
+
 <script>
 (function() {
   var e1 = ["nur.mk", "tcd.ie"].join("@");
